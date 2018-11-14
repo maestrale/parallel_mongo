@@ -1,3 +1,9 @@
+// Per usare, cambiare le seguenti variabili:
+    // 1. address   indirizzo cluster
+    // 2. dbName    nome database
+    // 3. collectionName    nome collection
+// creare nuove query come ad esempio query1, query2, query3 e semplicemente aggiungere nell'array Promise.all([ *qui* ])
+
 var mongodb = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
 var db;
@@ -10,6 +16,7 @@ MongoClient.connect(address, function(err, database) {
     db = database.db(dbName);
     let collection = db.collection('cartelliniTris');
     
+    // change collection name as needed
     let collectionName='cartelliniTris';
     let query1 = { $match: { numLinea : '3354323423', "date": {$gte: '20181001', $lte: '20181103'} }};
     let query2 = { $match: {"cdrList.macroFamiglia" : "DATI", "cdrList.dataChiamata": { $gte: "20181001000000", $lt: "20181031999999"}}};
@@ -32,7 +39,7 @@ MongoClient.connect(address, function(err, database) {
 
     function queryPromise(collection, query) {
         return new Promise(function(resolve, reject) {
-            // it was find(query) originally -> changed it to aggregate
+            // change aggregate() to find() if needed
             db.collection(collection).aggregate(query).toArray(function(err, resp) {
                 if (err) {
                     reject(err);

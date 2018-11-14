@@ -2,7 +2,7 @@
     // 1. address   indirizzo cluster
     // 2. dbName    nome database
     // 3. collectionName    nome collection
-// creare nuove query come ad esempio query1, query2, query3 e semplicemente aggiungere nell'array Promise.all([ *qui* ])
+// Aggiungere nuove query: crearle come gli esempi 'query1', 'query2', etc. e poi aggiungerle all'array Promise.all([ *qui* ])
 
 var mongodb = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
